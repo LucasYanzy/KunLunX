@@ -1,0 +1,97 @@
+/*
+ * KunLun Terminal Pro — Global Styles & Design Tokens
+ * Glassmorphism dark theme with geek typography
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ──────────────────────────────────── */
+:root {
+  --kl-bg:      #0D1117;
+  --kl-surface: #161B22;
+  --kl-border:  #30363D;
+  --kl-text:    #E6EDF3;
+  --kl-muted:   #8B949E;
+  --kl-cyan:    #00F5FF;
+  --kl-magenta: #FF00FF;
+  --kl-purple:  #A855F7;
+  --kl-up:      #EF4444;   /* 红涨 */
+  --kl-down:    #22C55E;   /* 绿跌 */
+  --kl-glass-bg: rgba(22, 27, 34, 0.7);
+  --kl-glass-blur: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--kl-bg);
+  color: var(--kl-text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* ─── Glassmorphism Utility ───────────────────────── */
+@layer components {
+  .glass-panel {
+    background: var(--kl-glass-bg);
+    backdrop-filter: blur(var(--kl-glass-blur));
+    -webkit-backdrop-filter: blur(var(--kl-glass-blur));
+    border: 1px solid var(--kl-border);
+    border-radius: 12px;
+  }
+
+  .glass-card {
+    background: var(--kl-glass-bg);
+    backdrop-filter: blur(var(--kl-glass-blur));
+    border: 1px solid var(--kl-border);
+    border-radius: 8px;
+    padding: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .glass-card:hover {
+    border-color: var(--kl-cyan);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.08);
+  }
+
+  /* Price change colors (Chinese convention: red up, green down) */
+  .price-up {
+    color: var(--kl-up);
+  }
+
+  .price-down {
+    color: var(--kl-down);
+  }
+
+  /* Monospace numbers for data tables */
+  .mono-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ─── Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--kl-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--kl-muted);
+}
